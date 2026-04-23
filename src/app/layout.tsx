@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
 
 const pressStart = Press_Start_2P({
@@ -61,6 +63,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100">
         {children}
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );

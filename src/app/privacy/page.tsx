@@ -176,18 +176,71 @@ export default function PrivacyPage() {
           {/* 5 */}
           <section className="space-y-3">
             <h2 className="font-[family-name:var(--font-pixel)] text-xs text-lime-400 tracking-widest">
-              ▸ 5. 쿠키 사용 여부
+              ▸ 5. 방문자 분석 도구
             </h2>
             <p>
-              <strong>사이트는 쿠키를 사용하지 않습니다.</strong>{" "}
-              추적 쿠키, 세션 쿠키, 서드파티 쿠키 모두 설정되지 않습니다.
+              사이트 개선과 트래픽 분석을 위해 다음 두 가지 분석 도구를 사용합니다:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-zinc-400 pl-2">
+              <li>
+                <strong className="text-zinc-200">Vercel Analytics</strong> —
+                페이지뷰, 방문자 수, 접속 국가, 디바이스 종류 등 집계 통계만 수집합니다.
+                개인 식별 정보나 쿠키는 사용하지 않습니다.{" "}
+                <a
+                  href="https://vercel.com/legal/privacy-policy"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+                >
+                  Vercel 개인정보처리방침
+                </a>
+              </li>
+              <li>
+                <strong className="text-zinc-200">Google Analytics 4 (GA4)</strong> —
+                유입 경로, 체류 시간, 검색 키워드 분석을 위해 사용합니다. GA4는 쿠키
+                및 유사 기술로 방문 정보를 수집하며, IP 주소는 익명화(anonymize_ip)되어
+                처리됩니다. 수집된 데이터는 Google에 전송되어 집계됩니다.{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+                >
+                  Google 개인정보처리방침
+                </a>
+              </li>
+            </ul>
+            <p className="text-zinc-400">
+              분석 도구 차단을 원하시면 브라우저 확장 프로그램(uBlock, Ghostery,
+              Privacy Badger 등) 또는{" "}
+              <a
+                href="https://tools.google.com/dlpage/gaoptout"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+              >
+                Google Analytics 차단 플러그인
+              </a>
+              을 사용하실 수 있습니다.
             </p>
           </section>
 
           {/* 6 */}
           <section className="space-y-3">
             <h2 className="font-[family-name:var(--font-pixel)] text-xs text-lime-400 tracking-widest">
-              ▸ 6. 향후 광고 연동 예고
+              ▸ 6. 쿠키 사용 여부
+            </h2>
+            <p>
+              사이트는 자체적으로는 쿠키를 설정하지 않지만, 위의 Google Analytics
+              서비스는 방문 분석 목적의 쿠키를 자동으로 설정할 수 있습니다.
+              Vercel Analytics는 쿠키를 사용하지 않습니다.
+            </p>
+          </section>
+
+          {/* 7 */}
+          <section className="space-y-3">
+            <h2 className="font-[family-name:var(--font-pixel)] text-xs text-lime-400 tracking-widest">
+              ▸ 7. 향후 광고 연동 예고
             </h2>
             <p>
               추후 Google AdSense 등 광고 서비스가 연동될 경우, Google을 포함한
@@ -197,10 +250,10 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* 7 */}
+          {/* 8 */}
           <section className="space-y-3">
             <h2 className="font-[family-name:var(--font-pixel)] text-xs text-lime-400 tracking-widest">
-              ▸ 7. 이용자 권리
+              ▸ 8. 이용자 권리
             </h2>
             <p>
               리더보드에 등록된 닉네임 삭제를 원하시면 아래 이메일로 문의해 주세요.
@@ -212,10 +265,10 @@ export default function PrivacyPage() {
             </ul>
           </section>
 
-          {/* 8 */}
+          {/* 9 */}
           <section className="space-y-3">
             <h2 className="font-[family-name:var(--font-pixel)] text-xs text-lime-400 tracking-widest">
-              ▸ 8. 문의처
+              ▸ 9. 문의처
             </h2>
             <p>
               개인정보 관련 문의:{" "}
