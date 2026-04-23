@@ -23,4 +23,8 @@
   .text-glow-cyan {
     text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
   }
+
+  .text-glow-rose {
+    text-shadow: 0 0 8px rgba(251, 113, 133, 0.6);
+  }
 }

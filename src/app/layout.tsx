@@ -14,10 +14,36 @@ const vt323 = VT323({
   weight: "400",
 });
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Flash Games — 옛날 플래시게임 모음",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Flash Games — 옛날 플래시게임 모음",
+    template: "%s | Flash Games",
+  },
   description:
-    "총알피하기, 공튀기기 같은 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+    "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: BASE_URL,
+    siteName: "Flash Games",
+    title: "Flash Games — 옛날 플래시게임 모음",
+    description:
+      "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Flash Games — 옛날 플래시게임 모음",
+    description:
+      "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
