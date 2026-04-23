@@ -1,15 +1,44 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: BASE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "개인정보처리방침",
+      item: `${BASE_URL}/privacy`,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "개인정보처리방침 — Flash Games",
   description:
     "Flash Games의 개인정보처리방침입니다. 수집 데이터, localStorage 사용, 리더보드 정책 등을 안내합니다.",
+  alternates: {
+    canonical: `${BASE_URL}/privacy`,
+  },
 };
 
 export default function PrivacyPage() {
   return (
     <div className="flex flex-col flex-1 scanlines">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <header className="w-full border-b border-zinc-800">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between gap-4">
           <Link

@@ -20,25 +20,25 @@ const BASE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Flash Games — 옛날 플래시게임 모음",
+    default: "Flash Games — 무료 온라인 브라우저 게임 모음 | 레트로 아케이드 미니게임",
     template: "%s | Flash Games",
   },
   description:
-    "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+    "총알피하기·늑대러너·타워스태커 등 무료 온라인 브라우저 게임 모음. 다운로드·설치 없이 바로 플레이하는 레트로 아케이드 미니게임. 쉬는 시간에 딱 맞는 옛날 플래시게임 감성.",
   openGraph: {
     type: "website",
     locale: "ko_KR",
     url: BASE_URL,
     siteName: "Flash Games",
-    title: "Flash Games — 옛날 플래시게임 모음",
+    title: "Flash Games — 무료 온라인 브라우저 게임 모음",
     description:
-      "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+      "총알피하기·늑대러너·타워스태커 등 무료 온라인 브라우저 게임 모음. 다운로드 없이 바로 플레이하는 레트로 아케이드 미니게임.",
   },
   twitter: {
-    card: "summary",
-    title: "Flash Games — 옛날 플래시게임 모음",
+    card: "summary_large_image",
+    title: "Flash Games — 무료 온라인 브라우저 게임 모음",
     description:
-      "총알피하기, 늑대 러너, 타워 스태커 등 단순하고 중독성 있는 옛날 플래시게임 스타일 미니게임을 한 곳에서 즐기세요.",
+      "총알피하기·늑대러너·타워스태커 등 무료 온라인 브라우저 게임 모음. 다운로드 없이 바로 플레이하는 레트로 아케이드 미니게임.",
   },
   robots: {
     index: true,

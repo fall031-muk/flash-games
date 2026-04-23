@@ -1,15 +1,44 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: BASE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "이용약관",
+      item: `${BASE_URL}/terms`,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "이용약관 — Flash Games",
   description:
     "Flash Games 이용약관입니다. 서비스 이용 조건, 리더보드 정책, 저작권 등을 확인하세요.",
+  alternates: {
+    canonical: `${BASE_URL}/terms`,
+  },
 };
 
 export default function TermsPage() {
   return (
     <div className="flex flex-col flex-1 scanlines">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <header className="w-full border-b border-zinc-800">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between gap-4">
           <Link

@@ -1,10 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: BASE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: `${BASE_URL}/about`,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "About — Flash Games",
+  title: "About — Flash Games 소개 | 무료 브라우저 미니게임 사이트",
   description:
-    "Flash Games는 옛날 플래시게임 감성을 현대 브라우저로 되살린 미니게임 컬렉션입니다. 사이트 소개, 게임 목록, 제작자 정보를 확인하세요.",
+    "Flash Games는 옛날 플래시게임 감성을 현대 브라우저로 되살린 무료 미니게임 컬렉션입니다. 총알피하기, 늑대 러너, 타워 스태커 등 다운로드 없이 바로 플레이하세요.",
+  alternates: {
+    canonical: `${BASE_URL}/about`,
+  },
 };
 
 const games = [
@@ -40,6 +65,10 @@ const games = [
 export default function AboutPage() {
   return (
     <div className="flex flex-col flex-1 scanlines">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <header className="w-full border-b border-zinc-800">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between gap-4">
           <Link
