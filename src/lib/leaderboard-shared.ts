@@ -5,12 +5,17 @@ export const NAME_PATTERN = /^[A-Z0-9가-힣]{1,5}$/;
 // 입력 중(IME 조합 단계) 허용할 문자: 영문 대소문자 + 숫자 + 완성 한글 + 한글 자모
 export const VALID_NAME_INPUT_PATTERN = /^[A-Za-z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$/;
 
-export type GameKey = "bullet-dodge" | "wolf-runner" | "tower-stacker";
+export type GameKey =
+  | "bullet-dodge"
+  | "wolf-runner"
+  | "tower-stacker"
+  | "neon-snake";
 
 export const GAME_KEYS: GameKey[] = [
   "bullet-dodge",
   "wolf-runner",
   "tower-stacker",
+  "neon-snake",
 ];
 
 export type GameConfig = {
@@ -45,13 +50,21 @@ export const GAME_CONFIGS: Record<GameKey, GameConfig> = {
     formatScore: (s) => `${Math.round(s).toLocaleString()}층`,
     unit: "층",
   },
+  "neon-snake": {
+    key: "neon-snake",
+    title: "Neon Snake",
+    maxScore: 625, // 25x25 그리드 가득 채우면 최대 625개 - 3 시작 = 622개, 여유있게 625
+    formatScore: (s) => `${Math.round(s).toLocaleString()}개`,
+    unit: "개",
+  },
 };
 
 export function isGameKey(value: unknown): value is GameKey {
   return (
     value === "bullet-dodge" ||
     value === "wolf-runner" ||
-    value === "tower-stacker"
+    value === "tower-stacker" ||
+    value === "neon-snake"
   );
 }
 

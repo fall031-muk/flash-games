@@ -615,6 +615,102 @@ class AudioEngine {
   stopTowerBgm(): void {
     this.stopBgm();
   }
+
+  // --- Neon Snake SFX ------------------------------------------------
+  /** Two-note ascending chirp played on run start (330 -> 440 Hz square). */
+  snakeStart(): void {
+    this.tone({ freq: 330, duration: 0.08, type: "square", volume: 0.24 });
+    window.setTimeout(
+      () =>
+        this.tone({ freq: 440, duration: 0.1, type: "square", volume: 0.26 }),
+      90,
+    );
+  }
+
+  /** Sweet pickup chirp when a food pellet is eaten (600 -> 800 Hz triangle). */
+  snakeEat(): void {
+    this.tone({
+      freq: 600,
+      freqEnd: 800,
+      duration: 0.08,
+      type: "triangle",
+      volume: 0.26,
+    });
+  }
+
+  /**
+   * Soft click on turn. Intentionally subtle — plays on every direction
+   * change so the volume is kept well below other SFX.
+   */
+  snakeTurn(): void {
+    this.tone({
+      freq: 440,
+      duration: 0.03,
+      type: "square",
+      volume: 0.03,
+    });
+  }
+
+  /** Descending sawtooth slide + noise burst on death. */
+  snakeDeath(): void {
+    this.tone({
+      freq: 440,
+      freqEnd: 80,
+      duration: 0.5,
+      type: "sawtooth",
+      volume: 0.38,
+    });
+    window.setTimeout(() => this.noise(0.25, 0.2), 120);
+  }
+
+  // --- Neon Snake BGM ------------------------------------------------
+  // Relaxed C-major pentatonic (C D E G A) walking loop. Distinct from
+  // the tower loop by using a trotting bass and a higher, busier lead.
+  private readonly snakeBassPattern: (number | null)[] = [
+    130.81, null, 196, null, 164.81, null, 196, null,
+    146.83, null, 220, null, 164.81, null, 196, null,
+  ];
+  private readonly snakeLeadPattern: (number | null)[] = [
+    523.25, null, 659.25, 783.99, null, 880, 659.25, null,
+    587.33, null, 783.99, 880, null, 1046.5, 783.99, null,
+  ];
+
+  startSnakeBgm(): void {
+    // Only one BGM at a time — cancel any other loop before starting.
+    this.stopBgm();
+    const ctx = this.ensureCtx();
+    if (!ctx) return;
+    const stepMs = 150; // 100 BPM 16th-notes (slow walking groove)
+    this.bgmStep = 0;
+    this.bgmInterval = window.setInterval(() => {
+      if (this.muted) return;
+      const idx = this.bgmStep % 16;
+      const bass = this.snakeBassPattern[idx];
+      const lead = this.snakeLeadPattern[idx];
+      if (bass !== null) {
+        this.tone({
+          freq: bass,
+          duration: 0.14,
+          type: "triangle",
+          volume: 0.07,
+        });
+      }
+      if (lead !== null) {
+        this.tone({
+          freq: lead,
+          duration: 0.12,
+          type: "square",
+          volume: 0.05,
+        });
+      }
+      this.bgmStep++;
+    }, stepMs);
+  }
+
+  /** Alias to stopBgm() — snake BGM shares the interval slot. */
+  stopSnakeBgm(): void {
+    this.stopBgm();
+  }
 }
 
 let singleton: AudioEngine | null = null;

@@ -38,4 +38,13 @@ export const games: Game[] = [
     accent: "text-violet-300 border-violet-300/40 shadow-violet-300/20",
     status: "playable",
   },
+  {
+    slug: "neon-snake",
+    title: "Neon Snake",
+    titleKo: "네온 스네이크",
+    description: "먹이를 먹고 길어지는 뱀, 자기 몸이나 벽에 닿지 마라.",
+    emoji: "🐍",
+    accent: "text-lime-400 border-lime-400/40 shadow-lime-400/20",
+    status: "playable",
+  },
 ];
