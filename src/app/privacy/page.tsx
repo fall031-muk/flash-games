@@ -191,10 +191,10 @@ export default function PrivacyPage() {
             <p>
               개인정보 관련 문의:{" "}
               <a
-                href="mailto:yesjiwon5304@gmail.com"
+                href="mailto:fall900802@gmail.com"
                 className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
               >
-                yesjiwon5304@gmail.com
+                fall900802@gmail.com
               </a>
             </p>
           </section>

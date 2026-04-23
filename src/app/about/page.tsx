@@ -159,10 +159,10 @@ export default function AboutPage() {
           <p className="font-[family-name:var(--font-retro)] text-lg text-zinc-400">
             문의 및 피드백:{" "}
             <a
-              href="mailto:yesjiwon5304@gmail.com"
+              href="mailto:fall900802@gmail.com"
               className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors"
             >
-              yesjiwon5304@gmail.com
+              fall900802@gmail.com
             </a>
           </p>
         </section>
