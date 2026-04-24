@@ -10,7 +10,8 @@ export type GameKey =
   | "wolf-runner"
   | "tower-stacker"
   | "neon-snake"
-  | "reflex-target";
+  | "reflex-target"
+  | "memory-sequence";
 
 export const GAME_KEYS: GameKey[] = [
   "bullet-dodge",
@@ -18,6 +19,7 @@ export const GAME_KEYS: GameKey[] = [
   "tower-stacker",
   "neon-snake",
   "reflex-target",
+  "memory-sequence",
 ];
 
 export type GameConfig = {
@@ -66,6 +68,13 @@ export const GAME_CONFIGS: Record<GameKey, GameConfig> = {
     formatScore: (s) => `${Math.round(s).toLocaleString()}점`,
     unit: "점",
   },
+  "memory-sequence": {
+    key: "memory-sequence",
+    title: "Memory Sequence",
+    maxScore: 200, // 현실적으로 50라운드 넘기면 전설, 여유있게 200 상한
+    formatScore: (s) => `${Math.round(s).toLocaleString()}라운드`,
+    unit: "라운드",
+  },
 };
 
 export function isGameKey(value: unknown): value is GameKey {
@@ -74,7 +83,8 @@ export function isGameKey(value: unknown): value is GameKey {
     value === "wolf-runner" ||
     value === "tower-stacker" ||
     value === "neon-snake" ||
-    value === "reflex-target"
+    value === "reflex-target" ||
+    value === "memory-sequence"
   );
 }
 

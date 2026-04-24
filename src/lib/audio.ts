@@ -823,6 +823,44 @@ class AudioEngine {
   stopReflexBgm(): void {
     this.stopBgm();
   }
+
+  // --- Memory Sequence -------------------------------------------------
+  // 4 버튼 고유 음정 (C4, E4, G4, B4 — Cmaj 7th 분산)
+  private readonly memoryTones: number[] = [261.63, 329.63, 392.0, 493.88];
+
+  memoryTone(idx: 0 | 1 | 2 | 3): void {
+    const f = this.memoryTones[idx] ?? 440;
+    this.tone({
+      freq: f,
+      duration: 0.22,
+      type: "triangle",
+      volume: 0.22,
+    });
+  }
+
+  memorySuccess(): void {
+    this.tone({ freq: 523, duration: 0.08, type: "triangle", volume: 0.22 });
+    window.setTimeout(
+      () => this.tone({ freq: 784, duration: 0.12, type: "triangle", volume: 0.24 }),
+      90,
+    );
+  }
+
+  memoryFail(): void {
+    this.tone({
+      freq: 300,
+      freqEnd: 80,
+      duration: 0.6,
+      type: "sawtooth",
+      volume: 0.35,
+    });
+    this.noise(0.35, 0.18);
+  }
+
+  memoryPlayerTick(): void {
+    // 플레이어 탭 시 아주 부드러운 클릭 피드백
+    this.tone({ freq: 1100, duration: 0.03, type: "square", volume: 0.08 });
+  }
 }
 
 let singleton: AudioEngine | null = null;

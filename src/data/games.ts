@@ -56,4 +56,13 @@ export const games: Game[] = [
     accent: "text-cyan-400 border-cyan-400/40 shadow-cyan-400/20",
     status: "playable",
   },
+  {
+    slug: "memory-sequence",
+    title: "Memory Sequence",
+    titleKo: "기억력 시퀀스",
+    description: "4색 버튼의 점멸 순서를 외워 그대로 따라 눌러라. 몇 라운드까지?",
+    emoji: "🧠",
+    accent: "text-fuchsia-400 border-fuchsia-400/40 shadow-fuchsia-400/20",
+    status: "playable",
+  },
 ];
