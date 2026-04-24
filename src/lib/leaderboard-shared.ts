@@ -11,7 +11,8 @@ export type GameKey =
   | "tower-stacker"
   | "neon-snake"
   | "reflex-target"
-  | "memory-sequence";
+  | "memory-sequence"
+  | "piano-tiles";
 
 export const GAME_KEYS: GameKey[] = [
   "bullet-dodge",
@@ -20,6 +21,7 @@ export const GAME_KEYS: GameKey[] = [
   "neon-snake",
   "reflex-target",
   "memory-sequence",
+  "piano-tiles",
 ];
 
 export type GameConfig = {
@@ -75,6 +77,13 @@ export const GAME_CONFIGS: Record<GameKey, GameConfig> = {
     formatScore: (s) => `${Math.round(s).toLocaleString()}라운드`,
     unit: "라운드",
   },
+  "piano-tiles": {
+    key: "piano-tiles",
+    title: "Piano Tiles",
+    maxScore: 9999, // 타일 카운트, 사실상 상한 없음
+    formatScore: (s) => `${Math.round(s).toLocaleString()}타일`,
+    unit: "타일",
+  },
 };
 
 export function isGameKey(value: unknown): value is GameKey {
@@ -84,7 +93,8 @@ export function isGameKey(value: unknown): value is GameKey {
     value === "tower-stacker" ||
     value === "neon-snake" ||
     value === "reflex-target" ||
-    value === "memory-sequence"
+    value === "memory-sequence" ||
+    value === "piano-tiles"
   );
 }
 

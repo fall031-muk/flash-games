@@ -861,6 +861,31 @@ class AudioEngine {
     // 플레이어 탭 시 아주 부드러운 클릭 피드백
     this.tone({ freq: 1100, duration: 0.03, type: "square", volume: 0.08 });
   }
+
+  // --- Piano Tiles -----------------------------------------------------
+  // 4 레인 각 C major 펜타토닉 음정 (C4, E4, G4, A4)
+  private readonly pianoTones: number[] = [261.63, 329.63, 392.0, 440.0];
+
+  pianoTap(idx: 0 | 1 | 2 | 3): void {
+    const f = this.pianoTones[idx] ?? 440;
+    this.tone({
+      freq: f,
+      duration: 0.18,
+      type: "triangle",
+      volume: 0.2,
+    });
+  }
+
+  pianoFail(): void {
+    this.tone({
+      freq: 240,
+      freqEnd: 80,
+      duration: 0.55,
+      type: "sawtooth",
+      volume: 0.35,
+    });
+    this.noise(0.25, 0.18);
+  }
 }
 
 let singleton: AudioEngine | null = null;

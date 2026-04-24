@@ -65,4 +65,13 @@ export const games: Game[] = [
     accent: "text-fuchsia-400 border-fuchsia-400/40 shadow-fuchsia-400/20",
     status: "playable",
   },
+  {
+    slug: "piano-tiles",
+    title: "Piano Tiles",
+    titleKo: "피아노 타일",
+    description: "내려오는 검은 타일만 탭. 흰 공간 누르거나 놓치면 끝.",
+    emoji: "🎹",
+    accent: "text-emerald-400 border-emerald-400/40 shadow-emerald-400/20",
+    status: "playable",
+  },
 ];
