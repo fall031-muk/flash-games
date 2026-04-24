@@ -47,4 +47,13 @@ export const games: Game[] = [
     accent: "text-lime-400 border-lime-400/40 shadow-lime-400/20",
     status: "playable",
   },
+  {
+    slug: "reflex-target",
+    title: "Reflex Target",
+    titleKo: "반응속도 타겟",
+    description: "30초 안에 팝업 타겟을 최대한 많이 맞혀라. 폭탄은 피할 것.",
+    emoji: "🎯",
+    accent: "text-cyan-400 border-cyan-400/40 shadow-cyan-400/20",
+    status: "playable",
+  },
 ];

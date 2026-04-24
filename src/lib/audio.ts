@@ -711,6 +711,118 @@ class AudioEngine {
   stopSnakeBgm(): void {
     this.stopBgm();
   }
+
+  // --- Reflex Target ---------------------------------------------------
+  targetHit(): void {
+    this.tone({
+      freq: 800,
+      duration: 0.06,
+      type: "triangle",
+      volume: 0.22,
+    });
+  }
+
+  targetGold(): void {
+    this.tone({ freq: 660, duration: 0.07, type: "triangle", volume: 0.24 });
+    window.setTimeout(
+      () =>
+        this.tone({ freq: 990, duration: 0.07, type: "triangle", volume: 0.24 }),
+      60,
+    );
+    window.setTimeout(
+      () =>
+        this.tone({ freq: 1320, duration: 0.1, type: "triangle", volume: 0.26 }),
+      120,
+    );
+  }
+
+  targetCrit(): void {
+    this.tone({
+      freq: 1500,
+      duration: 0.08,
+      type: "square",
+      volume: 0.25,
+    });
+  }
+
+  targetBomb(): void {
+    this.tone({
+      freq: 200,
+      freqEnd: 80,
+      duration: 0.3,
+      type: "sawtooth",
+      volume: 0.35,
+    });
+    this.noise(0.18, 0.2);
+  }
+
+  targetMiss(): void {
+    this.tone({
+      freq: 300,
+      freqEnd: 120,
+      duration: 0.18,
+      type: "sine",
+      volume: 0.15,
+    });
+  }
+
+  targetCombo(): void {
+    this.tone({ freq: 660, duration: 0.08, type: "square", volume: 0.22 });
+    window.setTimeout(
+      () => this.tone({ freq: 880, duration: 0.08, type: "square", volume: 0.22 }),
+      70,
+    );
+    window.setTimeout(
+      () =>
+        this.tone({ freq: 1100, duration: 0.12, type: "square", volume: 0.26 }),
+      140,
+    );
+  }
+
+  private readonly reflexBassPattern: (number | null)[] = [
+    110, null, 110, null, 146.83, null, 110, null,
+    98, null, 98, null, 123.47, null, 98, null,
+  ];
+  private readonly reflexLeadPattern: (number | null)[] = [
+    523, null, 659, null, 784, null, 659, 523,
+    440, null, 587, null, 698, null, 587, 440,
+  ];
+
+  startReflexBgm(): void {
+    this.stopBgm();
+    const ctx = this.ensureCtx();
+    if (!ctx) return;
+    const stepMs = 125; // ~120 BPM 16ths
+    this.bgmStep = 0;
+    this.bgmInterval = window.setInterval(() => {
+      if (this.muted) return;
+      const idx = this.bgmStep % 16;
+      const bass = this.reflexBassPattern[idx];
+      const lead = this.reflexLeadPattern[idx];
+      if (bass !== null) {
+        this.tone({
+          freq: bass,
+          duration: 0.2,
+          type: "square",
+          volume: 0.08,
+        });
+      }
+      if (lead !== null) {
+        this.tone({
+          freq: lead,
+          duration: 0.14,
+          type: "triangle",
+          volume: 0.09,
+        });
+      }
+      this.bgmStep++;
+    }, stepMs);
+  }
+
+  /** Alias to stopBgm() — reflex BGM shares the interval slot. */
+  stopReflexBgm(): void {
+    this.stopBgm();
+  }
 }
 
 let singleton: AudioEngine | null = null;

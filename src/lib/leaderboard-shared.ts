@@ -9,13 +9,15 @@ export type GameKey =
   | "bullet-dodge"
   | "wolf-runner"
   | "tower-stacker"
-  | "neon-snake";
+  | "neon-snake"
+  | "reflex-target";
 
 export const GAME_KEYS: GameKey[] = [
   "bullet-dodge",
   "wolf-runner",
   "tower-stacker",
   "neon-snake",
+  "reflex-target",
 ];
 
 export type GameConfig = {
@@ -57,6 +59,13 @@ export const GAME_CONFIGS: Record<GameKey, GameConfig> = {
     formatScore: (s) => `${Math.round(s).toLocaleString()}개`,
     unit: "개",
   },
+  "reflex-target": {
+    key: "reflex-target",
+    title: "Reflex Target",
+    maxScore: 99_999, // 30초 타임어택, 콤보 배율 포함 이론상 상한 여유있게
+    formatScore: (s) => `${Math.round(s).toLocaleString()}점`,
+    unit: "점",
+  },
 };
 
 export function isGameKey(value: unknown): value is GameKey {
@@ -64,7 +73,8 @@ export function isGameKey(value: unknown): value is GameKey {
     value === "bullet-dodge" ||
     value === "wolf-runner" ||
     value === "tower-stacker" ||
-    value === "neon-snake"
+    value === "neon-snake" ||
+    value === "reflex-target"
   );
 }
 
