@@ -886,6 +886,42 @@ class AudioEngine {
     });
     this.noise(0.25, 0.18);
   }
+
+  // --- Minesweeper Sprint ---------------------------------------------
+  mineReveal(): void {
+    this.tone({ freq: 1200, duration: 0.04, type: "square", volume: 0.1 });
+  }
+
+  mineFlag(): void {
+    this.tone({ freq: 900, duration: 0.05, type: "triangle", volume: 0.14 });
+    window.setTimeout(
+      () => this.tone({ freq: 660, duration: 0.05, type: "triangle", volume: 0.12 }),
+      50,
+    );
+  }
+
+  mineExplode(): void {
+    this.tone({
+      freq: 180,
+      freqEnd: 50,
+      duration: 0.5,
+      type: "sawtooth",
+      volume: 0.38,
+    });
+    this.noise(0.4, 0.25);
+  }
+
+  mineClear(): void {
+    this.tone({ freq: 660, duration: 0.08, type: "triangle", volume: 0.22 });
+    window.setTimeout(
+      () => this.tone({ freq: 880, duration: 0.08, type: "triangle", volume: 0.24 }),
+      80,
+    );
+    window.setTimeout(
+      () => this.tone({ freq: 1320, duration: 0.12, type: "triangle", volume: 0.26 }),
+      160,
+    );
+  }
 }
 
 let singleton: AudioEngine | null = null;

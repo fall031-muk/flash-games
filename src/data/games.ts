@@ -74,4 +74,13 @@ export const games: Game[] = [
     accent: "text-emerald-400 border-emerald-400/40 shadow-emerald-400/20",
     status: "playable",
   },
+  {
+    slug: "minesweeper-sprint",
+    title: "Minesweeper Sprint",
+    titleKo: "지뢰찾기 스프린트",
+    description: "60초 안에 9×9 지뢰찾기 맵을 최대한 많이 클리어하라.",
+    emoji: "💣",
+    accent: "text-indigo-400 border-indigo-400/40 shadow-indigo-400/20",
+    status: "playable",
+  },
 ];

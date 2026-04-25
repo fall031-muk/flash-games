@@ -12,7 +12,8 @@ export type GameKey =
   | "neon-snake"
   | "reflex-target"
   | "memory-sequence"
-  | "piano-tiles";
+  | "piano-tiles"
+  | "minesweeper-sprint";
 
 export const GAME_KEYS: GameKey[] = [
   "bullet-dodge",
@@ -22,6 +23,7 @@ export const GAME_KEYS: GameKey[] = [
   "reflex-target",
   "memory-sequence",
   "piano-tiles",
+  "minesweeper-sprint",
 ];
 
 export type GameConfig = {
@@ -84,6 +86,13 @@ export const GAME_CONFIGS: Record<GameKey, GameConfig> = {
     formatScore: (s) => `${Math.round(s).toLocaleString()}타일`,
     unit: "타일",
   },
+  "minesweeper-sprint": {
+    key: "minesweeper-sprint",
+    title: "Minesweeper Sprint",
+    maxScore: 999, // 60초 내 클리어한 맵 개수 — 현실적으로 10 안팎
+    formatScore: (s) => `${Math.round(s).toLocaleString()}맵`,
+    unit: "맵",
+  },
 };
 
 export function isGameKey(value: unknown): value is GameKey {
@@ -94,7 +103,8 @@ export function isGameKey(value: unknown): value is GameKey {
     value === "neon-snake" ||
     value === "reflex-target" ||
     value === "memory-sequence" ||
-    value === "piano-tiles"
+    value === "piano-tiles" ||
+    value === "minesweeper-sprint"
   );
 }
 
