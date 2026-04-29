@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteLegalFooter from "@/components/common/SiteLegalFooter";
 import NeonSnakeExperience from "@/components/games/neon-snake/NeonSnakeExperience";
 
 const BASE_URL =
@@ -305,12 +306,7 @@ export default function NeonSnakePage() {
         <div className="max-w-6xl mx-auto px-6 py-5 text-center font-[family-name:var(--font-retro)] text-base text-zinc-500">
           물고, 자라고, 살아남아라 — EAT AND GROW
         </div>
-        <div className="max-w-6xl mx-auto px-6 pb-5 flex flex-wrap justify-center gap-4 text-xs text-zinc-600">
-          <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy</Link>
-          <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms</Link>
-          <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-          <span>© 2026 Flash Games</span>
-        </div>
+        <SiteLegalFooter />
       </footer>
     </div>
   );

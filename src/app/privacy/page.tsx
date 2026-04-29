@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteLegalFooter from "@/components/common/SiteLegalFooter";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
@@ -231,9 +232,19 @@ export default function PrivacyPage() {
               ▸ 6. 쿠키 사용 여부
             </h2>
             <p>
-              사이트는 자체적으로는 쿠키를 설정하지 않지만, 위의 Google Analytics
-              서비스는 방문 분석 목적의 쿠키를 자동으로 설정할 수 있습니다.
-              Vercel Analytics는 쿠키를 사용하지 않습니다.
+              사이트는 다음의 기능적 쿠키 1개를 자체적으로 설정합니다:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-zinc-400 pl-2">
+              <li>
+                <code className="text-cyan-400 text-base">vc-d</code> — 방문자 카운터
+                중복 집계 방지용. 같은 날 다시 방문 시 카운트되지 않도록 하는 용도입니다.
+                값은 오늘 날짜(YYYYMMDD) 형식이며 매일 자정(KST) 자동 만료됩니다.
+                개인 식별 정보가 아닙니다.
+              </li>
+            </ul>
+            <p>
+              그 외 위의 Google Analytics 서비스는 방문 분석 목적의 자체 쿠키를 자동으로
+              설정할 수 있습니다. Vercel Analytics는 쿠키를 사용하지 않습니다.
             </p>
           </section>
 
@@ -288,12 +299,7 @@ export default function PrivacyPage() {
         <div className="max-w-4xl mx-auto px-6 py-5 text-center font-[family-name:var(--font-retro)] text-base text-zinc-500">
           당신의 데이터는 소중합니다 — YOUR DATA MATTERS
         </div>
-        <div className="max-w-4xl mx-auto px-6 pb-5 flex flex-wrap justify-center gap-4 text-xs text-zinc-600">
-          <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy</Link>
-          <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms</Link>
-          <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-          <span>© 2026 Flash Games</span>
-        </div>
+        <SiteLegalFooter />
       </footer>
     </div>
   );

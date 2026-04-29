@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { games } from "@/data/games";
+import SiteLegalFooter from "@/components/common/SiteLegalFooter";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
@@ -182,11 +183,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 py-6 text-center font-[family-name:var(--font-retro)] text-lg text-zinc-500">
           © {new Date().getFullYear()} Flash Games — Made with ♥
         </div>
-        <div className="max-w-5xl mx-auto px-6 pb-6 flex flex-wrap justify-center gap-4 text-xs text-zinc-600">
-          <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy</Link>
-          <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms</Link>
-          <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-        </div>
+        <SiteLegalFooter />
       </footer>
     </div>
   );

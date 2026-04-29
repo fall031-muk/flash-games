@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteLegalFooter from "@/components/common/SiteLegalFooter";
 import BulletDodgeExperience from "@/components/games/bullet-dodge/BulletDodgeExperience";
 import { games } from "@/data/games";
 
@@ -388,12 +389,7 @@ export default function BulletDodgePage() {
         <div className="max-w-6xl mx-auto px-6 py-5 text-center font-[family-name:var(--font-retro)] text-base text-zinc-500">
           피하고 또 피해라 — DODGE OR DIE
         </div>
-        <div className="max-w-6xl mx-auto px-6 pb-5 flex flex-wrap justify-center gap-4 text-xs text-zinc-600">
-          <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy</Link>
-          <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms</Link>
-          <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-          <span>© 2026 Flash Games</span>
-        </div>
+        <SiteLegalFooter />
       </footer>
     </div>
   );

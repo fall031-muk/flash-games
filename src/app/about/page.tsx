@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteLegalFooter from "@/components/common/SiteLegalFooter";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://flash-games-sand.vercel.app";
@@ -202,12 +203,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-6 py-5 text-center font-[family-name:var(--font-retro)] text-base text-zinc-500">
           플래시는 사라졌지만 게임은 계속된다 — THE GAME GOES ON
         </div>
-        <div className="max-w-4xl mx-auto px-6 pb-5 flex flex-wrap justify-center gap-4 text-xs text-zinc-600">
-          <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy</Link>
-          <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms</Link>
-          <Link href="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-          <span>© 2026 Flash Games</span>
-        </div>
+        <SiteLegalFooter />
       </footer>
     </div>
   );
